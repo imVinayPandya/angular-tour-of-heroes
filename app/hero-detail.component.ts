@@ -21,6 +21,7 @@ import {Hero} from "./hero";
           <input [(ngModel)]="hero.name" placeholder="name"/>
         </div>
         <button (click)="goBack()">Back</button>
+        <button (click)="save()">Save</button>
       </div>
     `,
     styleUrls: ['hero-detail.component.css']
@@ -47,5 +48,11 @@ export class HeroDetailComponent implements OnInit{
     goBack(): void {
         this.location.back();
     }
+
+    save(): void {
+        this.heroService.update(this.hero)
+            .then(() => this.goBack());
+    }
+
 
 }
